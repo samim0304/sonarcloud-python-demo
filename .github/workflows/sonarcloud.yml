@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      APP_PASSWORD: test_password  
+      APP_PASSWORD: test_password  # Custom environment variable
 
     steps:
       - name: Checkout code
@@ -35,7 +35,6 @@ jobs:
           coverage xml
 
       - name: Run SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          organization: samim0304
-          token: ${{ secrets.SONAR_TOKEN }}
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
