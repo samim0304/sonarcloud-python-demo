@@ -1,7 +1,7 @@
+from unittest.mock import patch
 from app import greet
 
-def test_greet_name():
-    assert greet("Samim") == "Hello, Samim!"
+@patch('builtins.input', return_value='12345')
+def test_greet(mock_input):
+    assert greet() == "Hello, your password is 12345"
 
-def test_greet_default():
-    assert greet("") == "Hello, World!"
