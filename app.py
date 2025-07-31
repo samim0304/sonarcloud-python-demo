@@ -5,7 +5,7 @@ def greet(name):
     return "Hello, World!"
 
 
-password = os.getenv("APP_PASSWORD", "default123")
+password = os.getenv("APP_PASSWORD", "12345")
 print("Password is:", password)
 
 def greet(password=None):
