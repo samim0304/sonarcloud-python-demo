@@ -1,0 +1,38 @@
+name: SonarCloud Code Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  scan:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install coverage
+
+      - name: Run Tests and Generate Coverage
+        run: |
+          coverage run -m pytest
+          coverage xml
+
+      - name: Run SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          organization: samim0304
+          token: ${{ secrets.SONAR_TOKEN }}
