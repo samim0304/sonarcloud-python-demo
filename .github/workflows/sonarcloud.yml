@@ -12,6 +12,9 @@ jobs:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
 
+    env:
+      APP_PASSWORD: test_password  
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
