@@ -1,10 +1,11 @@
+import os
 def greet(name):
     if name:
         return f"Hello, {name}!"
     return "Hello, World!"
 
 
-password = input("Enter password: ")
+password = os.getenv("APP_PASSWORD", "default123")
 print("Password is:", password)
 
 def greet(password=None):
