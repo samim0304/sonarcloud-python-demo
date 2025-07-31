@@ -11,7 +11,7 @@ print("Password is:", password)
 def greet(password=None):
     if password is None:
         # fallback for local dev (optional)
-        password = "default123"
+        password = "12345"
     return f"Hello, your password is {password}"
 
 
